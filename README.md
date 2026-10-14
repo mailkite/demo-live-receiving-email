@@ -2,9 +2,9 @@
 
 SDK-first companion examples for [MailKite's receiving guides](https://mailkite.dev/guides#receive-by-language), [Gmail forwarding](https://mailkite.dev/guides/receive-gmail-email-live) and [iCloud Mail forwarding](https://mailkite.dev/guides/receive-icloud-email-live). Node.js, Python and PHP store one SQLite row per message before acknowledging. Ruby, Go, Java, C#, Rust and Elixir demonstrate verification and logging; add a durable inbox before production use.
 
-[Open the Node example in StackBlitz](https://stackblitz.com/github/mailkite/demo-live-receiving-email?file=receive.mjs)
+[Deploy the Node receiver on Render](https://render.com/deploy?repo=https://github.com/mailkite/demo-live-receiving-email)
 
-Browser WebContainers can run Node but may not support node:sqlite. Use a local Node 22.13+ runtime for the SQLite-backed receiver and tests. A public webhook requires a public HTTPS endpoint; opening the code in a browser alone does not receive email.
+The Render blueprint uses paid compute and a persistent disk; review its pricing before applying. Supply your exact route's webhook secret in the deployment form, then point the route at the new service's `/hooks/mailkite`. Local tests require no hosting purchase. Browser WebContainers may not support node:sqlite, so use local Node 22.13+ for the SQLite-backed receiver and tests.
 
 ## First run: Node, Python or PHP
 

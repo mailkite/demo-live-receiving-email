@@ -1,0 +1,21 @@
+# Docs: docs/website/content/live-receiving-email-series.md
+# This blueprint uses paid compute and persistent disk; review Render's price before applying.
+services:
+  - type: web
+    name: live-email-receiver
+    runtime: node
+    plan: 0.5c-512mb
+    buildCommand: npm install
+    startCommand: npm start
+    autoDeployTrigger: checksPass
+    disk:
+      name: inbox
+      mountPath: /var/data
+      sizeGB: 1
+    envVars:
+      - key: NODE_VERSION
+        value: '24'
+      - key: MAILKITE_WEBHOOK_SECRET
+        sync: false
+      - key: INBOX_DB
+        value: /var/data/inbox.sqlite
