@@ -6,6 +6,7 @@ SECRET = ENV.fetch("MAILKITE_WEBHOOK_SECRET")
 abort "Set MAILKITE_WEBHOOK_SECRET" if SECRET.strip.empty?
 CLIENT = Mailkite::Client.new("unused-for-verify")
 set :port, ENV.fetch("PORT", "3000").to_i
+set :host_authorization, { permitted_hosts: ["localhost", "127.0.0.1", ENV.fetch("WEBHOOK_HOST", "localhost")] }
 
 post "/hooks/mailkite" do
   raw = request.body.read
