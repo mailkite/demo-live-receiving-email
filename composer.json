@@ -1,0 +1,4 @@
+{
+  "name": "mailkite/demo-live-receiving-email",
+  "require": { "php": ">=8.1", "ext-pdo_sqlite": "*", "mailkite/mailkite": "*" }
+}

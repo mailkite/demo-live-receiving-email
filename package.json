@@ -1,0 +1,8 @@
+{
+  "name": "demo-live-receiving-email",
+  "private": true,
+  "type": "module",
+  "scripts": { "start": "node receive.mjs", "check": "node check.mjs" },
+  "dependencies": { "express": "^5.1.0", "mailkite": "^0.20.0" },
+  "engines": { "node": ">=22.13.0" }
+}

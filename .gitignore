@@ -1,0 +1,10 @@
+node_modules/
+vendor/
+.venv/
+__pycache__/
+*.sqlite*
+target/
+bin/
+obj/
+lib/
+go.sum

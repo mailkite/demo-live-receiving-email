@@ -1,0 +1,2 @@
+mailkite-dev>=0.19.1
+Flask>=3.1,<4

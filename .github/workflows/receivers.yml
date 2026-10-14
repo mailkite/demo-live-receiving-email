@@ -1,0 +1,26 @@
+name: Receivers
+on: [push, pull_request]
+jobs:
+  sqlite-receivers:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        runtime: [node, python, php]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.3'
+          extensions: pdo_sqlite
+      - run: npm install
+      - if: matrix.runtime == 'python'
+        run: python -m pip install -r requirements.txt
+      - if: matrix.runtime == 'php'
+        run: composer install --no-interaction
+      - run: node verify-storage.mjs ${{ matrix.runtime }}
